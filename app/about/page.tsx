@@ -9,10 +9,11 @@ import NowPlaying from "@/components/NowPlaying";
 
 const PANEL_WIDTH = 420;
 const GAP = 8;
+const EXTRA_RIGHT_SHIFT = 24;
 
 export default function About() {
   const [isOpen, setIsOpen] = useState(false);
-  const [position, setPosition] = useState<{ top: number; right: number } | null>(
+  const [position, setPosition] = useState<{ top: number; left: number } | null>(
     null
   );
   const triggerRef = useRef<HTMLButtonElement>(null);
@@ -21,9 +22,14 @@ export default function About() {
   const updatePosition = () => {
     const rect = triggerRef.current?.getBoundingClientRect();
     if (!rect) return;
+    const panelWidth = Math.min(PANEL_WIDTH, window.innerWidth * 0.9);
+    const triggerCenterX = rect.left + rect.width / 2;
+    let left = triggerCenterX - panelWidth / 2 + EXTRA_RIGHT_SHIFT;
+    left = Math.min(left, window.innerWidth - panelWidth - 16);
+    left = Math.max(left, 16);
     setPosition({
       top: rect.bottom + GAP,
-      right: window.innerWidth - rect.right,
+      left,
     });
   };
 
@@ -117,10 +123,10 @@ export default function About() {
                 style={{
                   position: "fixed",
                   top: position.top,
-                  right: position.right,
+                  left: position.left,
                   width: `min(${PANEL_WIDTH}px, 90vw)`,
                 }}
-                className="z-50 origin-top-right"
+                className="z-50 origin-top"
               >
                 <BrowserWindow
                   title="currently listening"

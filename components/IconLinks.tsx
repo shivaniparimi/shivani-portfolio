@@ -49,23 +49,6 @@ function MailIcon({ size = 24 }: { size?: number }) {
   );
 }
 
-function ResumeIcon({ size = 24 }: { size?: number }) {
-  return (
-    <svg
-      width={size}
-      height={size}
-      viewBox="0 0 24 24"
-      fill="currentColor"
-      aria-hidden="true"
-    >
-      <path d="M6 2a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9l-7-7H6Z" />
-      <rect x="7" y="13" width="8" height="1.6" rx="0.8" fill="white" />
-      <rect x="7" y="16" width="8" height="1.6" rx="0.8" fill="white" />
-      <rect x="7" y="19" width="5" height="1.6" rx="0.8" fill="white" />
-    </svg>
-  );
-}
-
 function SpotifyIcon({ size = 24 }: { size?: number }) {
   return (
     <svg
@@ -100,22 +83,16 @@ const iconLinks = [
     colorClass: "text-[#1DB954]",
   },
   {
-    href: links.resume,
-    label: "Resume",
-    Icon: ResumeIcon,
-    colorClass: "text-[#DC2626]",
-  },
-  {
     href: `mailto:${links.email}`,
     label: "Mail",
     Icon: MailIcon,
-    colorClass: "text-[#EC4899]",
+    colorClass: "text-[#DC2626]",
   },
 ];
 
 export default function IconLinks() {
   return (
-    <div className="flex gap-6">
+    <div className="flex items-center gap-4">
       {iconLinks.map(({ href, label, Icon, colorClass }) => (
         <a
           key={label}
@@ -125,7 +102,7 @@ export default function IconLinks() {
           aria-label={label}
           className={`transition-transform hover:scale-110 ${colorClass}`}
         >
-          <Icon size={34} />
+          <Icon size={20} />
         </a>
       ))}
     </div>

@@ -13,7 +13,7 @@ export default function ThemeToggle() {
   }, []);
 
   if (!mounted) {
-    return <div className="fixed top-6 right-6 z-50 w-10 h-10" aria-hidden="true" />;
+    return <div className="w-10 h-10" aria-hidden="true" />;
   }
 
   const isDark = resolvedTheme === "dark";
@@ -22,7 +22,7 @@ export default function ThemeToggle() {
     <button
       onClick={() => setTheme(isDark ? "light" : "dark")}
       aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
-      className="fixed top-6 right-6 z-50 w-10 h-10 rounded-full flex items-center justify-center text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white hover:bg-black/5 dark:hover:bg-white/10 transition-colors"
+      className="w-10 h-10 rounded-full flex items-center justify-center text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white hover:bg-black/5 dark:hover:bg-white/10 transition-colors"
     >
       {isDark ? <Sun size={20} /> : <Moon size={20} />}
     </button>

@@ -1,5 +1,3 @@
-import IconLinks from "@/components/IconLinks";
-
 export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-center gap-8">
@@ -12,7 +10,6 @@ export default function Home() {
         </span>
         <span className="inline-block w-1 h-[0.9em] bg-neutral-900 dark:bg-white align-bottom ml-1 animate-caret" />
       </h1>
-      <IconLinks />
     </main>
   );
 }
