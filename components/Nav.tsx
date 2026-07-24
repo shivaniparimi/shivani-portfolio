@@ -23,8 +23,8 @@ export default function Nav() {
   const pathname = usePathname();
 
   return (
-    <nav className="fixed top-0 inset-x-0 z-50 flex items-center justify-between gap-4 px-6 sm:px-10 py-4">
-      <div className="flex items-center gap-6 sm:gap-8">
+    <nav className="fixed top-0 inset-x-0 z-50 flex flex-wrap items-center justify-center sm:justify-between gap-x-4 gap-y-2 px-4 sm:px-10 py-3 sm:py-4">
+      <div className="flex items-center gap-4 sm:gap-8">
         {navItems.map((item) => (
           <Link
             key={item.href}
