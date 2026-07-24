@@ -1,0 +1,87 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+
+  --animate-cloud-1: cloud-drift 22s linear infinite;
+  --animate-cloud-2: cloud-drift 28s linear infinite;
+  --animate-cloud-3: cloud-drift 25s linear infinite;
+  --animate-type1: type1 8s linear forwards;
+  --animate-type2: type2 8s linear forwards;
+  --animate-caret: caret-blink 0.8s steps(1) infinite;
+  --animate-twinkle: twinkle 3s ease-in-out infinite;
+
+  @keyframes cloud-drift {
+    from {
+      transform: translateX(-10vw);
+    }
+    to {
+      transform: translateX(110vw);
+    }
+  }
+
+  @keyframes type1 {
+    0% {
+      width: 0;
+      animation-timing-function: steps(15, end);
+    }
+    18.75% {
+      width: 15ch;
+      animation-timing-function: steps(1);
+    }
+    56.25% {
+      width: 15ch;
+      animation-timing-function: steps(15, end);
+    }
+    68.75% {
+      width: 0;
+    }
+    100% {
+      width: 0;
+    }
+  }
+
+  @keyframes type2 {
+    0% {
+      width: 0;
+    }
+    68.75% {
+      width: 0;
+      animation-timing-function: steps(23, end);
+    }
+    100% {
+      width: 23ch;
+    }
+  }
+
+  @keyframes caret-blink {
+    50% {
+      opacity: 0;
+    }
+  }
+
+  @keyframes twinkle {
+    0%,
+    100% {
+      opacity: 0.2;
+    }
+    50% {
+      opacity: 1;
+    }
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+}
