@@ -9,12 +9,14 @@ export default function BrowserWindow({
   children,
   maxWidthClassName = "max-w-5xl",
   tight = false,
+  draggable = true,
   onClose,
 }: {
   title: string;
   children: React.ReactNode;
   maxWidthClassName?: string;
   tight?: boolean;
+  draggable?: boolean;
   onClose?: () => void;
 }) {
   const dotSize = tight ? "w-2 h-2" : "w-3 h-3";
@@ -32,6 +34,7 @@ export default function BrowserWindow({
   const [dragging, setDragging] = useState(false);
 
   function handlePointerDown(e: React.PointerEvent<HTMLDivElement>) {
+    if (!draggable) return;
     if (e.pointerType === "touch") return;
     if ((e.target as HTMLElement).closest("button")) return;
 
@@ -86,9 +89,11 @@ export default function BrowserWindow({
         onPointerMove={handlePointerMove}
         onPointerUp={handlePointerUp}
         onPointerCancel={handlePointerUp}
-        className={`flex items-center justify-between bg-neutral-800 select-none cursor-grab active:cursor-grabbing ${
-          tight ? "px-3 py-2" : "px-5 py-3"
-        } ${dragging ? "cursor-grabbing" : ""}`}
+        className={`flex items-center justify-between bg-neutral-800 select-none ${
+          draggable ? "cursor-grab active:cursor-grabbing" : ""
+        } ${tight ? "px-3 py-2" : "px-5 py-3"} ${
+          dragging ? "cursor-grabbing" : ""
+        }`}
       >
         <span
           className={`font-mono text-neutral-200 ${tight ? "text-xs" : "text-sm"}`}
