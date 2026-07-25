@@ -24,63 +24,76 @@ const projects = [
 
 export default function Projects() {
   return (
-    <main className="flex min-h-screen flex-col items-center gap-8 px-6 py-28">
+    <main className="flex min-h-screen flex-col items-center gap-10 px-6 py-28">
       <h1 className="text-4xl font-bold text-neutral-900 dark:text-white">
         projects
       </h1>
 
-      {projects.map((project) => (
-        <BrowserWindow key={project.title} title={project.title} draggable={false}>
-          {project.description ? (
-            <div className="space-y-3 text-left font-mono">
-              {project.image && (
-                <div className="relative aspect-video w-full overflow-hidden rounded-lg border border-black/10 dark:border-white/10">
-                  <Image
-                    src={project.image}
-                    alt={`${project.title} screenshot`}
-                    fill
-                    sizes="(min-width: 1024px) 900px, 100vw"
-                    className="object-cover object-top"
-                  />
+      <div className="flex w-full max-w-7xl flex-col gap-10 sm:gap-0">
+        {projects.map((project, index) => (
+          <div
+            key={project.title}
+            className={`flex w-full justify-center ${
+              index % 2 === 0 ? "sm:justify-start" : "sm:justify-end"
+            } ${index === 1 ? "sm:-mt-[345px]" : index === 2 ? "sm:-mt-[148px]" : ""}`}
+          >
+            <BrowserWindow
+              title={project.title}
+              draggable={false}
+              maxWidthClassName="max-w-xl"
+            >
+              {project.description ? (
+                <div className="space-y-2.5 text-left font-mono">
+                  {project.image && (
+                    <div className="relative aspect-video w-full overflow-hidden rounded-lg border border-black/10 dark:border-white/10">
+                      <Image
+                        src={project.image}
+                        alt={`${project.title} screenshot`}
+                        fill
+                        sizes="(min-width: 640px) 576px, 100vw"
+                        className="object-cover object-top"
+                      />
+                    </div>
+                  )}
+                  <p className="text-base font-semibold text-neutral-900 dark:text-white">
+                    {project.title}
+                  </p>
+                  <p className="text-xs leading-relaxed text-neutral-700 dark:text-neutral-300">
+                    {project.description}
+                  </p>
+                  <p className="text-xs text-neutral-500 dark:text-neutral-400">
+                    {project.stack}
+                  </p>
+                  <div className="flex gap-4 pt-1 text-sm">
+                    <a
+                      href={project.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-neutral-800 underline underline-offset-4 dark:text-neutral-200 hover:text-neutral-900 dark:hover:text-white"
+                    >
+                      github ↗
+                    </a>
+                    {project.live && (
+                      <a
+                        href={project.live}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-neutral-800 underline underline-offset-4 dark:text-neutral-200 hover:text-neutral-900 dark:hover:text-white"
+                      >
+                        live demo ↗
+                      </a>
+                    )}
+                  </div>
                 </div>
+              ) : (
+                <p className="text-base font-mono text-neutral-500 dark:text-neutral-400">
+                  placeholder
+                </p>
               )}
-              <p className="text-lg font-semibold text-neutral-900 dark:text-white">
-                {project.title}
-              </p>
-              <p className="text-sm leading-relaxed text-neutral-700 dark:text-neutral-300">
-                {project.description}
-              </p>
-              <p className="text-xs text-neutral-500 dark:text-neutral-400">
-                {project.stack}
-              </p>
-              <div className="flex gap-4 pt-1 text-sm">
-                <a
-                  href={project.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-neutral-800 underline underline-offset-4 dark:text-neutral-200 hover:text-neutral-900 dark:hover:text-white"
-                >
-                  github ↗
-                </a>
-                {project.live && (
-                  <a
-                    href={project.live}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-neutral-800 underline underline-offset-4 dark:text-neutral-200 hover:text-neutral-900 dark:hover:text-white"
-                  >
-                    live demo ↗
-                  </a>
-                )}
-              </div>
-            </div>
-          ) : (
-            <p className="text-base font-mono text-neutral-500 dark:text-neutral-400">
-              placeholder
-            </p>
-          )}
-        </BrowserWindow>
-      ))}
+            </BrowserWindow>
+          </div>
+        ))}
+      </div>
     </main>
   );
 }
