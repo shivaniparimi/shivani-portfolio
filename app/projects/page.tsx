@@ -1,5 +1,5 @@
-import Image from "next/image";
 import BrowserWindow from "@/components/BrowserWindow";
+import ProjectScreenshot from "@/components/ProjectScreenshot";
 
 const projects = [
   {
@@ -7,6 +7,7 @@ const projects = [
     image: "/pantrypal-screenshot.png",
     description:
       "An AI recipe generator for whatever's already in your fridge. Type your ingredients or snap a photo and get recipes tailored to what you have on hand. Filter by preferences, save favorites, and ask the built-in AI \"chef\" chatbot for help.",
+    why: "As a college student, I often come home with no idea how to use up my random ingredients and leftovers. I wanted to create a way to limit food waste and make meals easily.",
     stack: "React · TypeScript · Vite · Express · Firebase · Gemini",
     github: "https://github.com/shivaniparimi/PantryPal",
     live: "https://pantry-pal-navy.vercel.app",
@@ -16,6 +17,7 @@ const projects = [
     image: "/pricetracker-screenshot.png",
     description:
       "A price monitoring tool for online shopping. Submit a product URL and it finds the same item across competing retailers, checks prices daily, and emails you when one drops.",
+    why: "I always miss the window of buying that pair of jeans that goes on sale. I built this to make it easier to find where a product is sold across different retailers and compare prices so that I never miss a sale again.",
     stack: "FastAPI · Python · SQLite · Playwright · APScheduler",
     github: "https://github.com/shivaniparimi/PriceTracker",
   },
@@ -24,7 +26,7 @@ const projects = [
 
 export default function Projects() {
   return (
-    <main className="flex min-h-screen flex-col items-center gap-10 px-6 py-28">
+    <main className="flex min-h-screen flex-col items-center gap-10 px-4 py-28">
       <h1 className="text-4xl font-bold text-neutral-900 dark:text-white">
         projects
       </h1>
@@ -35,25 +37,22 @@ export default function Projects() {
             key={project.title}
             className={`flex w-full justify-center ${
               index % 2 === 0 ? "sm:justify-start" : "sm:justify-end"
-            } ${index === 1 ? "sm:-mt-[345px]" : index === 2 ? "sm:-mt-[148px]" : ""}`}
+            } ${index === 1 ? "sm:-mt-[345px]" : index === 2 ? "sm:-mt-[214px]" : ""}`}
           >
             <BrowserWindow
               title={project.title}
               draggable={false}
-              maxWidthClassName="max-w-xl"
+              maxWidthClassName="max-w-[608px]"
             >
               {project.description ? (
                 <div className="space-y-2.5 text-left font-mono">
                   {project.image && (
-                    <div className="relative aspect-video w-full overflow-hidden rounded-lg border border-black/10 dark:border-white/10">
-                      <Image
-                        src={project.image}
-                        alt={`${project.title} screenshot`}
-                        fill
-                        sizes="(min-width: 640px) 576px, 100vw"
-                        className="object-cover object-top"
-                      />
-                    </div>
+                    <ProjectScreenshot
+                      src={project.image}
+                      alt={`${project.title} screenshot`}
+                      why={project.why}
+                      sizes="(min-width: 640px) 608px, 100vw"
+                    />
                   )}
                   <p className="text-base font-semibold text-neutral-900 dark:text-white">
                     {project.title}
