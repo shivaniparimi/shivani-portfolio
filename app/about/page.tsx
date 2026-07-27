@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
@@ -27,11 +27,36 @@ export default function About() {
     let left = triggerCenterX - panelWidth / 2 + EXTRA_RIGHT_SHIFT;
     left = Math.min(left, window.innerWidth - panelWidth - 16);
     left = Math.max(left, 16);
-    setPosition({
-      top: rect.bottom + GAP,
-      left,
-    });
+
+    const panelHeight = panelRef.current?.getBoundingClientRect().height ?? 0;
+    let top = rect.bottom + GAP;
+    if (panelHeight && top + panelHeight > window.innerHeight - 16) {
+      const openUpwardsTop = rect.top - GAP - panelHeight;
+      top = Math.max(
+        openUpwardsTop >= 16 ? openUpwardsTop : window.innerHeight - panelHeight - 16,
+        16
+      );
+    }
+
+    setPosition({ top, left });
   };
+
+  useLayoutEffect(() => {
+    if (!isOpen || !position || !panelRef.current) return;
+    const rect = triggerRef.current?.getBoundingClientRect();
+    if (!rect) return;
+    const panelHeight = panelRef.current.getBoundingClientRect().height;
+    if (position.top + panelHeight <= window.innerHeight - 16) return;
+
+    const openUpwardsTop = rect.top - GAP - panelHeight;
+    const correctedTop = Math.max(
+      openUpwardsTop >= 16 ? openUpwardsTop : window.innerHeight - panelHeight - 16,
+      16
+    );
+    if (Math.abs(correctedTop - position.top) > 1) {
+      setPosition((p) => (p ? { ...p, top: correctedTop } : p));
+    }
+  }, [isOpen, position]);
 
   useEffect(() => {
     if (!isOpen) return;

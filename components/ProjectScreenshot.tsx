@@ -63,11 +63,11 @@ export default function ProjectScreenshot({
           </span>
 
           <div
-            className={`absolute inset-0 flex items-center justify-center p-4 text-center transition-opacity duration-200 sm:p-6 ${
+            className={`absolute inset-0 flex items-center justify-center overflow-y-auto p-4 text-center transition-opacity duration-200 sm:p-6 ${
               isRevealed ? "opacity-100" : "pointer-events-none opacity-0"
             } bg-neutral-900/85`}
           >
-            <div>
+            <div className="my-auto">
               <p className="mb-2 font-mono text-xs tracking-widest text-neutral-400">
                 why
               </p>
