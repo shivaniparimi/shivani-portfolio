@@ -94,7 +94,7 @@ export default function About() {
     <main className="flex min-h-screen flex-col items-center justify-center px-6 py-28">
       <BrowserWindow title="about">
         <div className="flex flex-col sm:flex-row-reverse items-center gap-8 sm:gap-12">
-          <div className="relative w-56 h-72 sm:w-72 sm:h-96 rounded-xl border-4 border-green-800 dark:border-purple-950 shadow-md shrink-0 overflow-hidden">
+          <div className="relative w-56 h-72 sm:w-72 sm:h-96 rounded-xl border-4 border-green-800 dark:border-indigo-950 shadow-md shrink-0 overflow-hidden">
             <Image
               src="/about-photo.png"
               alt="Shivani Parimi"

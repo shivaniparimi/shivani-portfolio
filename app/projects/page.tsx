@@ -1,7 +1,26 @@
+import Link from "next/link";
 import BrowserWindow from "@/components/BrowserWindow";
 import ProjectScreenshot from "@/components/ProjectScreenshot";
 
-const projects = [
+type Project = {
+  title: string;
+  image?: string;
+  description?: string;
+  why?: string;
+  stack?: string;
+  github?: string;
+  live?: string;
+  caseStudy?: string;
+};
+
+const projects: Project[] = [
+  {
+    title: "Mosaic",
+    description:
+      "A native iOS productivity app that brings together the essential pieces of modern productivity into one effortless experience.",
+    stack: "SwiftUI · iOS",
+    caseStudy: "/projects/mosaic",
+  },
   {
     title: "Pantry Pal",
     image: "/pantrypal-screenshot.png",
@@ -21,7 +40,6 @@ const projects = [
     stack: "FastAPI · Python · SQLite · Playwright · APScheduler",
     github: "https://github.com/shivaniparimi/PriceTracker",
   },
-  { title: "project-three" },
 ];
 
 export default function Projects() {
@@ -31,14 +49,9 @@ export default function Projects() {
         projects
       </h1>
 
-      <div className="flex w-full max-w-7xl flex-col gap-10 sm:gap-0">
-        {projects.map((project, index) => (
-          <div
-            key={project.title}
-            className={`flex w-full justify-center ${
-              index % 2 === 0 ? "sm:justify-start" : "sm:justify-end"
-            } ${index === 1 ? "sm:-mt-[345px]" : index === 2 ? "sm:-mt-[214px]" : ""}`}
-          >
+      <div className="flex w-full max-w-[608px] flex-col gap-10">
+        {projects.map((project) => (
+          <div key={project.title} className="flex w-full justify-center">
             <BrowserWindow
               title={project.title}
               draggable={false}
@@ -64,14 +77,16 @@ export default function Projects() {
                     {project.stack}
                   </p>
                   <div className="flex gap-4 pt-1 text-sm">
-                    <a
-                      href={project.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-neutral-800 underline underline-offset-4 dark:text-neutral-200 hover:text-neutral-900 dark:hover:text-white"
-                    >
-                      github ↗
-                    </a>
+                    {project.github && (
+                      <a
+                        href={project.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-neutral-800 underline underline-offset-4 dark:text-neutral-200 hover:text-neutral-900 dark:hover:text-white"
+                      >
+                        github ↗
+                      </a>
+                    )}
                     {project.live && (
                       <a
                         href={project.live}
@@ -81,6 +96,14 @@ export default function Projects() {
                       >
                         live demo ↗
                       </a>
+                    )}
+                    {project.caseStudy && (
+                      <Link
+                        href={project.caseStudy}
+                        className="text-neutral-800 underline underline-offset-4 dark:text-neutral-200 hover:text-neutral-900 dark:hover:text-white"
+                      >
+                        case study ↗
+                      </Link>
                     )}
                   </div>
                 </div>
