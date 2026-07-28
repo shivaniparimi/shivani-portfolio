@@ -69,7 +69,8 @@ export default function MosaicCaseStudy() {
               <Reveal delay={0.15} className="w-full max-w-sm">
                 <DiagramPlaceholder
                   icon={ImageIcon}
-                  note="icon"
+                  caption="Mosaic app icon / hero graphic"
+                  note="Replace with real artwork"
                   aspect="square"
                 />
               </Reveal>
