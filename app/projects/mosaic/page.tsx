@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import {
   ArrowLeft,
   Smartphone,
   MessageSquareText,
   NotebookPen,
   Paperclip,
-  Image as ImageIcon,
   Inbox,
   Layers,
   MapPin,
@@ -17,7 +17,7 @@ import { Container } from "@/components/case-study/Container";
 import Reveal from "@/components/case-study/Reveal";
 import SectionColumns from "@/components/case-study/SectionColumns";
 import PullQuote from "@/components/case-study/PullQuote";
-import { PhonePlaceholder, DiagramPlaceholder } from "@/components/case-study/MediaPlaceholder";
+import { PhonePlaceholder } from "@/components/case-study/MediaPlaceholder";
 
 import CompetitorGrid from "./_components/CompetitorGrid";
 import FindingsList from "./_components/FindingsList";
@@ -66,13 +66,18 @@ export default function MosaicCaseStudy() {
               </Reveal>
             </div>
             <div className="flex min-w-0 flex-1 justify-center">
-              <Reveal delay={0.15} className="w-full max-w-sm">
-                <DiagramPlaceholder
-                  icon={ImageIcon}
-                  caption="Mosaic app icon / hero graphic"
-                  note="Replace with real artwork"
-                  aspect="square"
-                />
+              <Reveal delay={0.15} className="w-full max-w-xs">
+                <div className="relative aspect-square w-full">
+                  <Image
+                    src="/logos/mosaic-icon.png"
+                    alt="Mosaic app icon: a stained-glass style tulip"
+                    fill
+                    priority
+                    unoptimized
+                    sizes="(min-width: 640px) 320px, 75vw"
+                    className="object-contain drop-shadow-xl"
+                  />
+                </div>
               </Reveal>
             </div>
           </div>
