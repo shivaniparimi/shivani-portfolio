@@ -111,7 +111,7 @@ export default function About() {
             <p className="text-base leading-relaxed text-neutral-800 dark:text-neutral-200">
               I&apos;m currently studying Math &amp; Computer Science at UC
               San Diego, hoping to pursue a full time career in software
-              engineering. I love bringing ideas to life through software
+              engineering. Currently, I am interested in mobile and web app development. I love bringing ideas to life through software
               by crafting interactive experiences where every interaction
               feels intentional. If this resonates with you, I’d love to connect!
             </p>

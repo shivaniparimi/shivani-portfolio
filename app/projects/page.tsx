@@ -19,6 +19,7 @@ const projects: Project[] = [
     description:
       "A native iOS productivity app that brings together the essential pieces of modern productivity into one effortless experience.",
     stack: "SwiftUI · iOS",
+    github: "https://github.com/shivaniparimi/Mosaic",
     caseStudy: "/projects/mosaic",
   },
   {
