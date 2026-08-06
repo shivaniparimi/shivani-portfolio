@@ -32,11 +32,6 @@ const findings: Finding[] = [
       "Calendar awareness",
     ],
   },
-  {
-    number: "04",
-    title: "AI should reduce friction, not replace decision-making.",
-    body: "Rather than asking AI to plan an entire day, users benefit more from AI quietly handling repetitive work, such as extracting action items from meeting notes or organizing captured tasks.",
-  },
 ];
 
 export default function FindingsList() {

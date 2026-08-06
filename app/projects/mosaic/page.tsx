@@ -4,9 +4,6 @@ import Image from "next/image";
 import {
   ArrowLeft,
   Smartphone,
-  MessageSquareText,
-  NotebookPen,
-  Paperclip,
   Inbox,
   Layers,
   MapPin,
@@ -196,7 +193,6 @@ export default function MosaicCaseStudy() {
               <div className="space-y-5">
                 {[
                   {
-                    stat: "45%",
                     label: "Task Capture",
                     description:
                       "Users struggle with quickly capturing ideas and turning them into actionable tasks.",
@@ -205,7 +201,6 @@ export default function MosaicCaseStudy() {
                     bg: "bg-blue-500/10",
                   },
                   {
-                    stat: "32%",
                     label: "Fragmented Workflows",
                     description:
                       "Users rely on multiple applications to manage tasks, notes, calendars, and reminders.",
@@ -214,7 +209,6 @@ export default function MosaicCaseStudy() {
                     bg: "bg-purple-500/10",
                   },
                   {
-                    stat: "27%",
                     label: "Contextual Organization",
                     description:
                       "Users want tasks connected to relevant context such as deadlines, locations, and attachments.",
@@ -223,7 +217,6 @@ export default function MosaicCaseStudy() {
                     bg: "bg-amber-500/10",
                   },
                   {
-                    stat: "21%",
                     label: "AI Assistance",
                     description:
                       "Users are interested in automation that reduces repetitive work while keeping them in control.",
@@ -239,14 +232,9 @@ export default function MosaicCaseStudy() {
                       <f.icon size={18} strokeWidth={2} className={f.color} aria-hidden="true" />
                     </div>
                     <div className="min-w-0">
-                      <div className="flex items-baseline gap-2">
-                        <span className={`font-mono text-base font-semibold ${f.color}`}>
-                          {f.stat}
-                        </span>
-                        <p className="text-sm font-semibold text-neutral-900 dark:text-white">
-                          {f.label}
-                        </p>
-                      </div>
+                      <p className="text-sm font-semibold text-neutral-900 dark:text-white">
+                        {f.label}
+                      </p>
                       <p className="text-sm leading-relaxed text-neutral-600 dark:text-neutral-400">
                         {f.description}
                       </p>
@@ -293,19 +281,6 @@ export default function MosaicCaseStudy() {
         </SectionColumns>
         <Container width="wide" className="mt-14">
           <FeatureList />
-        </Container>
-        <Container width="wide" className="mt-16">
-          <div className="flex snap-x snap-mandatory gap-8 overflow-x-auto pb-2 sm:flex-wrap sm:justify-center sm:gap-12 sm:overflow-visible sm:pb-0">
-            <Reveal className="shrink-0 snap-center">
-              <PhonePlaceholder icon={MessageSquareText} caption="Natural language capture" />
-            </Reveal>
-            <Reveal delay={0.08} className="shrink-0 snap-center">
-              <PhonePlaceholder icon={NotebookPen} caption="AI meeting notes" />
-            </Reveal>
-            <Reveal delay={0.16} className="shrink-0 snap-center">
-              <PhonePlaceholder icon={Paperclip} caption="Attachments" />
-            </Reveal>
-          </div>
         </Container>
       </section>
 

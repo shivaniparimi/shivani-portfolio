@@ -1,4 +1,4 @@
-import { MessageSquareText, NotebookPen, Paperclip, MapPin, Sparkles } from "lucide-react";
+import { MessageSquareText, Paperclip, MapPin } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import Reveal from "@/components/case-study/Reveal";
 
@@ -17,12 +17,6 @@ const features: Feature[] = [
       'Create structured tasks by typing naturally, such as "Email Haley tomorrow at 2 PM."',
   },
   {
-    icon: NotebookPen,
-    title: "AI Meeting Notes",
-    description:
-      "Convert meeting transcripts into actionable tasks that can be reviewed before adding them to a project.",
-  },
-  {
     icon: Paperclip,
     title: "Photo & File Attachments",
     description:
@@ -33,24 +27,13 @@ const features: Feature[] = [
     title: "Location-Based Reminders",
     description: "Trigger reminders based on arriving at or leaving specific locations.",
   },
-  {
-    icon: Sparkles,
-    title: "Smart Daily Planning",
-    description:
-      "Recommend what to work on next using deadlines, calendar availability, and estimated task duration while keeping users in control.",
-    tag: "Exploration",
-  },
 ];
 
 export default function FeatureList() {
   return (
     <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
       {features.map((f, i) => (
-        <Reveal
-          key={f.title}
-          delay={(i % 2) * 0.08}
-          className={i === features.length - 1 ? "sm:col-span-2" : ""}
-        >
+        <Reveal key={f.title} delay={(i % 2) * 0.08}>
           <div className="h-full rounded-2xl border border-black/5 bg-white/50 p-6 backdrop-blur-md dark:border-white/10 dark:bg-white/[0.04]">
             <div className="mb-4 flex items-center gap-3">
               <f.icon
