@@ -1,4 +1,4 @@
-import { MessageSquareText, Paperclip, MapPin } from "lucide-react";
+import { MessageSquareText, Paperclip, MapPin, CalendarSync } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import Reveal from "@/components/case-study/Reveal";
 
@@ -26,6 +26,11 @@ const features: Feature[] = [
     icon: MapPin,
     title: "Location-Based Reminders",
     description: "Trigger reminders based on arriving at or leaving specific locations.",
+  },
+  {
+    icon: CalendarSync,
+    title: "Calendar & Reminders Sync",
+    description: "Stay in sync with existing calendar and reminders apps.",
   },
 ];
 
