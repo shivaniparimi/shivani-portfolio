@@ -11,6 +11,10 @@ import {
   CalendarClock,
   Search,
   Settings,
+  Regex,
+  Database,
+  ImageIcon,
+  CalendarSync,
 } from "lucide-react";
 
 import { Container } from "@/components/case-study/Container";
@@ -350,8 +354,70 @@ export default function MosaicCaseStudy() {
             </div>
           </Reveal>
         </Container>
+        <Container width="narrow" className="mt-16">
+          <Reveal delay={0.18}>
+            <p className="mb-6 text-center font-mono text-xs uppercase tracking-widest text-neutral-600 dark:text-neutral-400">
+              How I Built It
+            </p>
+          </Reveal>
+          <Reveal delay={0.22}>
+            <div className="space-y-5">
+              {[
+                {
+                  label: "NSRegularExpression",
+                  description:
+                    "I wrote my own parser to catch dates, times, ranges, recurring days, and #tags as you type — no ML model, no external API, just regex and word-boundary matching.",
+                  icon: Regex,
+                },
+                {
+                  label: "SwiftData",
+                  description:
+                    "Everything's stored locally — tasks link out to their attachments and other records through @Relationship.",
+                  icon: Database,
+                },
+                {
+                  label: "PhotosUI & .fileImporter",
+                  description:
+                    "Photos come in through PhotosPicker, other files through .fileImporter, and I copy both into the app's own Documents folder so they stick around.",
+                  icon: ImageIcon,
+                },
+                {
+                  label: "CoreLocation",
+                  description:
+                    "Location reminders run on CoreLocation geofencing (CLLocationManager + CLCircularRegion), so they still fire in the background even when the app's closed.",
+                  icon: MapPin,
+                },
+                {
+                  label: "EventKit",
+                  description:
+                    "Calendar and Reminders sync in read-only through EventKit, so your existing events just show up alongside your tasks in Upcoming.",
+                  icon: CalendarSync,
+                },
+              ].map((f) => (
+                <div key={f.label} className="flex gap-4">
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-black/5 dark:bg-white/10">
+                    <f.icon
+                      size={18}
+                      strokeWidth={2}
+                      className="text-neutral-700 dark:text-neutral-300"
+                      aria-hidden="true"
+                    />
+                  </div>
+                  <div className="min-w-0">
+                    <p className="text-sm font-semibold text-neutral-900 dark:text-white">
+                      {f.label}
+                    </p>
+                    <p className="text-sm leading-relaxed text-neutral-600 dark:text-neutral-400">
+                      {f.description}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </Reveal>
+        </Container>
         <Container width="narrow" className="mt-12 text-center">
-          <Reveal delay={0.2}>
+          <Reveal delay={0.28}>
             <Link
               href="/projects"
               className="inline-flex items-center gap-1.5 font-mono text-sm text-neutral-600 underline underline-offset-4 transition-colors hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white"

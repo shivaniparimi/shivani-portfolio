@@ -8,11 +8,15 @@ export default function ProjectScreenshot({
   alt,
   why,
   sizes,
+  aspectClassName = "aspect-video",
+  fit = "cover",
 }: {
   src: string;
   alt: string;
   why?: string;
   sizes: string;
+  aspectClassName?: string;
+  fit?: "cover" | "contain";
 }) {
   const [isRevealed, setIsRevealed] = useState(false);
 
@@ -36,7 +40,7 @@ export default function ProjectScreenshot({
 
   return (
     <div
-      className="relative aspect-video w-full overflow-hidden rounded-lg border border-black/10 dark:border-white/10"
+      className={`relative ${aspectClassName} w-full overflow-hidden rounded-lg border border-black/10 dark:border-white/10`}
       onPointerEnter={why ? handlePointerEnter : undefined}
       onPointerLeave={why ? handlePointerLeave : undefined}
       onPointerUp={why ? handlePointerUp : undefined}
@@ -49,7 +53,7 @@ export default function ProjectScreenshot({
         alt={alt}
         fill
         sizes={sizes}
-        className="object-cover object-top"
+        className={fit === "contain" ? "object-contain" : "object-cover object-top"}
       />
 
       {why && (
