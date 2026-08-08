@@ -3,18 +3,21 @@ import Link from "next/link";
 import Image from "next/image";
 import {
   ArrowLeft,
-  Smartphone,
   Inbox,
   Layers,
   MapPin,
   Sparkles,
+  CalendarDays,
+  CalendarClock,
+  Search,
+  Settings,
 } from "lucide-react";
 
 import { Container } from "@/components/case-study/Container";
 import Reveal from "@/components/case-study/Reveal";
 import SectionColumns from "@/components/case-study/SectionColumns";
 import PullQuote from "@/components/case-study/PullQuote";
-import { PhonePlaceholder } from "@/components/case-study/MediaPlaceholder";
+import { PhoneVideo } from "@/components/case-study/MediaPlaceholder";
 
 import CompetitorGrid from "./_components/CompetitorGrid";
 import FindingsList from "./_components/FindingsList";
@@ -292,10 +295,63 @@ export default function MosaicCaseStudy() {
       >
         <SectionColumns id="final-product-heading" title="Final Product" />
         <Reveal delay={0.1} className="mt-14 flex justify-center">
-          <PhonePlaceholder icon={Smartphone} caption="Mosaic — product demo" size="hero" />
+          <PhoneVideo src="/mosaic-demo.mp4" size="hero" />
         </Reveal>
-        <Container width="narrow" className="mt-16 text-center">
+        <Container width="narrow" className="mt-16">
           <Reveal delay={0.15}>
+            <div className="space-y-5">
+              {[
+                {
+                  label: "Today",
+                  description: "Tasks on the daily.",
+                  icon: CalendarDays,
+                },
+                {
+                  label: "Inbox",
+                  description:
+                    "Similar to the Notes app — jot down upcoming tasks without a date that need to get done.",
+                  icon: Inbox,
+                },
+                {
+                  label: "Upcoming",
+                  description: "Syncs with your calendar and shows your upcoming schedule.",
+                  icon: CalendarClock,
+                },
+                {
+                  label: "Search",
+                  description: "Search by task or tag.",
+                  icon: Search,
+                },
+                {
+                  label: "Settings",
+                  description: "Appearance and syncs.",
+                  icon: Settings,
+                },
+              ].map((f) => (
+                <div key={f.label} className="flex gap-4">
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-black/5 dark:bg-white/10">
+                    <f.icon
+                      size={18}
+                      strokeWidth={2}
+                      className="text-neutral-700 dark:text-neutral-300"
+                      aria-hidden="true"
+                    />
+                  </div>
+                  <div className="min-w-0">
+                    <p className="text-sm font-semibold text-neutral-900 dark:text-white">
+                      {f.label}
+                    </p>
+                    <p className="text-sm leading-relaxed text-neutral-600 dark:text-neutral-400">
+                      {f.description}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </Reveal>
+        </Container>
+        <Container width="narrow" className="mt-12 text-center">
+          <Reveal delay={0.2}>
             <Link
               href="/projects"
               className="inline-flex items-center gap-1.5 font-mono text-sm text-neutral-600 underline underline-offset-4 transition-colors hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white"

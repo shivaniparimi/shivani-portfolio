@@ -49,6 +49,43 @@ export function PhonePlaceholder({
   );
 }
 
+export function PhoneVideo({
+  src,
+  caption,
+  size = "default",
+  className = "",
+}: {
+  src: string;
+  caption?: string;
+  size?: PhoneSize;
+  className?: string;
+}) {
+  return (
+    <figure className={`flex flex-col items-center gap-3 ${className}`}>
+      <div
+        className={`relative ${phoneWidth[size]} aspect-[9/19.5] overflow-hidden rounded-[2.5rem] border-[6px] border-neutral-900 bg-neutral-900 shadow-xl`}
+      >
+        <video
+          src={src}
+          className="absolute inset-[2px] h-[calc(100%-4px)] w-[calc(100%-4px)] rounded-[2.1rem] object-cover"
+          autoPlay
+          loop
+          muted
+          playsInline
+        />
+        <div className="absolute inset-x-0 top-0 flex justify-center pt-2">
+          <div className="h-5 w-20 rounded-full bg-neutral-900" />
+        </div>
+      </div>
+      {caption && (
+        <figcaption className="font-mono text-xs text-neutral-500 dark:text-neutral-400">
+          {caption}
+        </figcaption>
+      )}
+    </figure>
+  );
+}
+
 export function DiagramPlaceholder({
   icon: Icon,
   caption,
