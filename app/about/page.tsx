@@ -105,9 +105,6 @@ export default function About() {
             />
           </div>
           <div className="flex-1 space-y-4 text-left font-mono min-w-0">
-            <p className="text-xl sm:text-2xl font-semibold text-neutral-900 dark:text-white">
-              hi! i&apos;m shivani.
-            </p>
             <p className="text-base leading-relaxed text-neutral-800 dark:text-neutral-200">
               I&apos;m currently studying Math &amp; Computer Science at UC
               San Diego, hoping to pursue a full time career in software
